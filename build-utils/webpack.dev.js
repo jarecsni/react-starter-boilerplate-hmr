@@ -23,12 +23,12 @@ const config = {
       ],
     }],
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  // plugins: [new webpack.HotModuleReplacementPlugin()],
   devServer: {
     host: 'localhost',
     port: port,
     historyApiFallback: true,
-    hot: true,
+    hot: false,
     open: true,
   },
 };

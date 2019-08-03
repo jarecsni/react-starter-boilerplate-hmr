@@ -5,6 +5,16 @@ import App from './components/App';
 
 import './index.scss';
 
+import Worker from './Simple.worker';
+
+const worker = new Worker();
+
+worker.postMessage({ a: 1 });
+worker.onmessage = function (event) {
+  console.log('On Message: ', event.data);
+};
+
+
 const render = Component =>
   ReactDOM.render(
     <AppContainer>
