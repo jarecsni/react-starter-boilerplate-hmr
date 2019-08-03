@@ -13,34 +13,24 @@ const config = {
   },
   devtool: 'source-map',
   module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              importLoaders: 1,
-              localsConvention: 'camelCase',
-              sourceMap: true,
-            },
-          },
-          {
-            loader: 'postcss-loader',
-          },
-        ],
-      },
-    ],
+    rules: [{
+      test: /\.scss$/,
+      use: [
+          // fallback to style-loader in development
+          process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
+          "css-loader",
+          "sass-loader"
+      ],
+    }],
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'styles/[name].[hash].css',
-    }),
-  ],
+        // Options similar to the same options in webpackOptions.output
+        // both options are optional
+        filename: "[name].css",
+        chunkFilename: "[id].css"
+    })
+  ]
 };
 
 module.exports = config;

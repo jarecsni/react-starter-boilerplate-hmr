@@ -14,24 +14,14 @@ const config = {
   },
   devtool: 'inline-source-map',
   module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              localsConvention: 'camelCase',
-              sourceMap: true,
-            },
-          },
-        ],
-      },
-    ],
+    rules: [{
+      test: /\.scss$/,
+      use: [
+          "style-loader", // creates style nodes from JS strings
+          "css-loader", // translates CSS into CommonJS
+          "sass-loader" // compiles Sass to CSS, using Node Sass by default
+      ],
+    }],
   },
   plugins: [new webpack.HotModuleReplacementPlugin()],
   devServer: {
