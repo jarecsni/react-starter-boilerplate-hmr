@@ -11,5 +11,9 @@ _.has(obj, 'foo')
 self.addEventListener('message', (event) => {
     console.log(event.data, 'received');
     // Post data to parent thread
-    self.postMessage({ ...event.data, message: 'Hello from Worker', addedNumbers: addTwoNumbers(1,2) });
+    self.postMessage({ 
+        ...event.data, 
+        message: 'Hello from Worker', 
+        addedNumbers: addTwoNumbers(1,2) 
+    });
 });
